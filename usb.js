@@ -1,6 +1,17 @@
-var binary = require('node-pre-gyp');
 var path = require('path');
-var binding_path = binary.find(path.resolve(path.join(__dirname,'./package.json')));
+var fs = require('fs');
+var binding_path = path.resolve(
+  path.join(
+    __dirname,
+    `./src/binding/usb_bindings_${process.platform}_v${process.versions.modules}.node`
+  )
+);
+
+if (!fs.existsSync(binding_path)) {
+  throw new Error(
+    `usb-bindings not available for ${process.platform} node ABI version ${process.versions.modules}`
+  );
+}
 
 var usb = exports = module.exports = require(binding_path);
 var events = require('events')

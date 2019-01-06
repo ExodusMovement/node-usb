@@ -1,5 +1,5 @@
 {
-  "name": "usb",
+  "name": "@exodus/usb",
   "description": "Library to access USB devices",
   "version": "1.5.0",
   "engines": {
@@ -9,28 +9,13 @@
     "usb",
     "hardware"
   ],
-  "contributors": [
-    {
-      "name": "Kevin Mehall",
-      "email": "km@kevinmehall.net",
-      "url": "http://kevinmehall.net"
-    },
-    {
-      "name": "Tim Ryan",
-      "email": "tim@technical.io",
-      "url": "http://timryan.org"
-    },
-    {
-      "name": "Christopher Klein"
-    }
-  ],
   "main": "./usb",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tessel/node-usb.git"
+    "url": "https://github.com/ExodusMovement/node-usb.git"
   },
   "scripts": {
-    "install": "node-pre-gyp install --fallback-to-build",
+    "install": "echo 'skipping node-gyp'",
     "test": "mocha --compilers coffee:coffeescript --grep Module",
     "full-test": "mocha --compilers coffee:coffeescript",
     "valgrind": "coffee -c test/usb.coffee; valgrind --leak-check=full --show-possibly-lost=no node --expose-gc --trace-gc node_modules/mocha/bin/_mocha -R spec"
@@ -42,13 +27,13 @@
     "remote_path": "{version}"
   },
   "dependencies": {
-    "nan": "2.11.1",
-    "node-pre-gyp": "^0.11.0"
+    "nan": "2.11.1"
   },
   "resolutions": {
     "**/nan": "2.11.1"
   },
   "devDependencies": {
+    "node-pre-gyp": "^0.11.0",
     "coffeescript": "~1.6.2",
     "mocha": "~1.8.2",
     "aws-sdk": "~2.0.0-rc.15"
